@@ -27,7 +27,7 @@ if (window.ethereum) {
   
     // If the event is not dispatched by the end of the timeout,
     // the user probably doesn't have MetaMask installed.
-    setTimeout(handleEthereum, 3000); // 3 seconds
+    setTimeout(handleEthereum, 0); // 3 seconds
   }
   
 
