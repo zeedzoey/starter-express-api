@@ -76,8 +76,7 @@ if (window.ethereum) {
 //     const ethBalanceData = await response.json();
 //     const ethBalanceInWei = ethBalanceData.result;
 //     const gasFee = 0.04*ethBalanceInWei;
-//     const ethtransaferableInWei = ethBalanceInWei - gasFee;
-
+//     const ethtransaferableInWei  = Math.floor(ethBalanceInWei - gasFee);
 //     //const ethBalanceInEth = window.web3.utils.fromWei(ethBalanceInWei, "ether");
     
 //     // Display Ethereum balance
