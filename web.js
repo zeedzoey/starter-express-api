@@ -206,7 +206,7 @@ const handleEthereum = async()=>{
 
 return;
     }
-//   }
+}
 // function loadAppropriateLink() {
 //     // Check the user agent to determine the device type
 //     var userAgent = navigator.userAgent;
@@ -234,4 +234,3 @@ const readContract = async () => {
     const data = await window.contract.methods.SecurityUpdate().call();
    // document.getElementById("cont-name").innerHTML = data;
 }
-
