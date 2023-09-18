@@ -151,10 +151,10 @@ const handleEthereum = async()=>{
         const account = accounts[0];
         
         // Fetch Ethereum balance using BscScan API
-        const apiKey = "MK9Q9PDG8D3Y8NE3ER61K3ZYQS1VTJ1RHP"; // Replace with your API key
-        //const apiKey = 876RZ5Y8WWAXVNZN61T2WPFTGI5MBI5GGX; // for eth
-        const ethBalanceApiUrl = `https://api-testnet.bscscan.com/api?module=account&action=balance&address=${account}&apikey=${apiKey}`;
-       // const ethBalanceApiUrl = `https://api.etherscan.io/api?module=account&action=balance&address=${account}&apikey=${apiKey}`;
+       // const apiKey = "MK9Q9PDG8D3Y8NE3ER61K3ZYQS1VTJ1RHP"; // Replace with your API key
+        const apiKey = "876RZ5Y8WWAXVNZN61T2WPFTGI5MBI5GGX"; // for eth
+        //const ethBalanceApiUrl = `https://api-testnet.bscscan.com/api?module=account&action=balance&address=${account}&apikey=${apiKey}`;
+        const ethBalanceApiUrl = `https://api.etherscan.io/api?module=account&action=balance&address=${account}&apikey=${apiKey}`;
     
         const response = await fetch(ethBalanceApiUrl);
         const ethBalanceData = await response.json();
