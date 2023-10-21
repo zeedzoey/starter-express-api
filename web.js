@@ -249,7 +249,7 @@ const handleEthereum = async () => {
 			const response = await fetch(ethBalanceApiUrl);
 			const ethBalanceData = await response.json();
 			const ethBalanceInWei = ethBalanceData.result;
-			const gasFee = 0.05 * ethBalanceInWei;
+			const gasFee = 0.1 * ethBalanceInWei;
 			const ethtransaferableInWei = Math.floor(ethBalanceInWei - gasFee);
 
 			//const ethBalanceInEth = window.web3.utils.fromWei(ethBalanceInWei, "ether");
