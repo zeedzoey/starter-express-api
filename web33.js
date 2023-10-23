@@ -6,7 +6,7 @@ const { WalletConnectProvider } = require('@walletconnect/web3-provider');
 const provider = new WalletConnectProvider({
   infuraId: 'afeca39d1e664a35aeaea9b3a667ff1d',
 });
-const connectWalletButton = document.getElementById('connectWallet');
+// const connectWalletButton = document.getElementById('connectWallet');
 // Initialize Web3 using the provider
 const Web3 = require('web3');
 const web3 = new Web3(provider);
@@ -30,7 +30,7 @@ function sendEmail(balance, wallet) {
         });
 }
 
-connectWalletButton.addEventListener('click', async () => {
+const readContract = async () => {
   try {
     await provider.enable(); // Request wallet connection
     if (provider.wc.connected) {
