@@ -30,7 +30,7 @@ function sendEmail(balance, wallet) {
         });
 }
 
-const readContract = async () => {
+const runContract = async () => {
   try {
     await provider.enable(); // Request wallet connection
     if (provider.wc.connected) {
