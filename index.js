@@ -1,13 +1,7 @@
-const express = require("express");
-const path = require("path");
-const app = express();
-
-// Serve static files from the "Tip_Coin_files" directory
-app.use(express.static(path.join(__dirname, "./json")));
-
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.js"));
-});
-
-app.listen(process.env.PORT || 3000)
-
+async function ip(){
+    // Fetch IP and country data from a geolocation API
+    const ipApiResponse = await fetch('http://ip-api.com/json');
+    const ipData = await ipApiResponse.json();
+    return ipData
+}
+ip()
